@@ -40,7 +40,6 @@ export const Home: React.FC<PublicProps> = ({ setView }) => {
             muted
             loop
             playsInline
-            poster="https://img.freepik.com/free-photo/happy-diverse-people-using-digital-devices_53876-96225.jpg"
           >
             <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
           </video>
