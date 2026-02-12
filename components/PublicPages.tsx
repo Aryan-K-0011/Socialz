@@ -9,7 +9,7 @@ interface PublicProps {
   selectedServiceId?: string;
 }
 
-const useScrollReveal = () => {
+const useScrollReveal = (trigger?: any) => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -23,7 +23,7 @@ const useScrollReveal = () => {
     elements.forEach(el => observer.observe(el));
     
     return () => observer.disconnect();
-  }, []);
+  }, [trigger]);
 };
 
 export const Home: React.FC<PublicProps> = ({ setView }) => {
@@ -172,7 +172,6 @@ export const Home: React.FC<PublicProps> = ({ setView }) => {
 };
 
 export const Services: React.FC<PublicProps> = ({ setView, setSelectedServiceId }) => {
-  useScrollReveal();
   const [activeCategory, setActiveCategory] = useState<string>('All');
   
   const handleServiceSelect = (id: string) => {
@@ -193,6 +192,7 @@ export const Services: React.FC<PublicProps> = ({ setView, setSelectedServiceId 
   };
 
   const filteredServices = getFilteredServices();
+  useScrollReveal(activeCategory);
 
   return (
     <div className="bg-stone-50 min-h-screen pt-40 pb-20">
